@@ -29,6 +29,7 @@ public class ShortenUrlController {
         int pr = shortenUrlRepository.save(url);
         String shortenUrl = "http://localhost:8080/shrturl/park/"+pr;
         redirectAttributes.addFlashAttribute("shortenUrl",shortenUrl);
+        redirectAttributes.addFlashAttribute("url",url);
         return "redirect:/shrturl/main";
     }
 
