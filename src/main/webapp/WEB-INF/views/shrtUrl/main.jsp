@@ -23,6 +23,7 @@
 
         <body>
             <div class="container">
+                <h1>단축 URL 생성기</h1>
                 <div class="mb-3">
                     <form action="/shrturl/saveurl" method="POST">
                         <label for="exampleFormControlInput1" class="form-label">URL 입력</label>
@@ -30,6 +31,7 @@
                             value="${url}"><br>
                         <input type="submit" value="단축" class="btn btn-primary mb-3">
                     </form>
+                    <hr>
                     <textarea id="shortenUrl" readonly class="form-control">${shortenUrl}</textarea><br>
                     <button value="${shortenUrl}" class="btn btn-primary mb-3" id="button">복사</button>
                 </div>
@@ -49,7 +51,6 @@
 
                 // 클립보드에 복사
                 function copyClipboard() {
-                    alert('복사되었습니다.');
                     const text = document.getElementById('shortenUrl').textContent;
                     const textarea = document.createElement('textarea');
                     textarea.textContent = text;
