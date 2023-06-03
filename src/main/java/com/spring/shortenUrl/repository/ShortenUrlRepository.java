@@ -7,9 +7,7 @@ import java.util.Map;
 
 @Repository
 public interface ShortenUrlRepository {
-    int save(String url);
+    String save(String url);
 
-    String findByShortenUrl(int sq);
-
-
+    String findByShortenUrl(String shortenUrl);
 }

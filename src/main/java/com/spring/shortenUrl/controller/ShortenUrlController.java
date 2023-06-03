@@ -26,16 +26,17 @@ public class ShortenUrlController {
 
     @RequestMapping(value = "/saveurl", method = RequestMethod.POST)
     public String saveUrl(RedirectAttributes redirectAttributes, String url){
-        int pr = shortenUrlRepository.save(url);
-        String shortenUrl = "http://localhost:8080/shrturl/park/"+pr;
+        String pr = shortenUrlRepository.save(url);
+        String shortenUrl = "http://localhost:8080/shrturl/"+pr;
 
         redirectAttributes.addFlashAttribute("shortenUrl",shortenUrl);
         redirectAttributes.addFlashAttribute("url",url);
+
         return "redirect:/shrturl/main";
     }
 
-    @RequestMapping(value = "/park/{pr}", method = RequestMethod.GET)
-    public String goUrl(@PathVariable int pr){
+    @RequestMapping(value = "/{pr}", method = RequestMethod.GET)
+    public String goUrl(@PathVariable String pr){
         String url = shortenUrlRepository.findByShortenUrl(pr);
         return "redirect:"+ url;
     }
